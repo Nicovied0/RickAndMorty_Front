@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.backLanding{
+  color:#fff;
+  background-image: url('../../assets/rick.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  max-width: 100%;
+}
+.containerLanding{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textLanding{
+  margin-top: 4rem;
+}
+.btnLanding{
+  padding: 1rem 2rem;
+  background-color: #e7e7e7;
+  border-radius: 12px;
+  margin: 1rem;
+}

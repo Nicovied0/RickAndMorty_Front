@@ -1,0 +1,36 @@
+.nav_container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 10rem;
+}
+
+.nav_img {
+  width: 10rem;
+}
+.nav_div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.addPj_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 1rem;
+  align-items: center;
+}
+.filter_container {
+  display: flex;
+}
+.filter_selec {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 0.5rem;
+}
