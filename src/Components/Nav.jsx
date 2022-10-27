@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Styles/Nav.module.css";
 import Search from "./Search";
-import icon from "../assets/log.jpg";
+import icon from "../assets/icon.png";
 // import { Link } from "react-router-dom";
 
 const Nav = () => {
