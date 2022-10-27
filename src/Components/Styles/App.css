@@ -1,7 +1,23 @@
 body{
   background-color: black;
-  color:white
+  color:white;
+
 }
 .App{
   color:white
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #c70f65;
+  /* border: 15px solid rgb(199, 15, 101); */
+  box-shadow: -33px 0px 20px 10px #c70f65;
+  
+}
+
+
+
+::-webkit-scrollbar-thumb {
+  background: #fafafa90; 
+  height: 5px;
+  border-radius: 10px;
 }

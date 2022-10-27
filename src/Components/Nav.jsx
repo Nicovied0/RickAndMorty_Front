@@ -8,7 +8,7 @@ const Nav = () => {
   return (
     <div className={style.nav_container}>
       <img src={icon} alt="logo" className={style.nav_img} />
-      <Search />
+      <Search className={style.nav_searchBar}/>
       {/* <Link to="/addPj">
         <button>Add Character</button>
       </Link> */}
