@@ -1,14 +1,20 @@
 import {
-  GET_CHARACTER, GET_DETAILS, GET_EPISODES, GET_BY_NAME, BYCREATED,
-  CLEAR_PAGE, ORDER, POST
-} from '../actions/actions'
-
+  GET_CHARACTER,
+  GET_DETAILS,
+  GET_EPISODES,
+  GET_BY_NAME,
+  BYCREATED,
+  CLEAR_PAGE,
+  ORDER,
+  POST,
+  CLEAR_DETAILS,
+} from "../actions/actions";
 
 const initialState = {
   characters: [],
   details: [],
   filteredCharacters: [],
-  episodes: []
+  episodes: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -16,64 +22,72 @@ function rootReducer(state = initialState, action) {
     case GET_CHARACTER:
       return {
         ...state,
-        characters: action.payload
-      }
+        characters: action.payload,
+      };
 
     case GET_DETAILS:
       return {
         ...state,
-        details: action.payload
-      }
+        details: action.payload,
+      };
+    case CLEAR_DETAILS:
+      return {
+        ...state,
+        details: [],
+      };
 
     case GET_BY_NAME:
       return {
         ...state,
-        characters: action.payload
-      }
+        characters: action.payload,
+      };
 
     case GET_EPISODES:
       return {
         ...state,
-        episodes: action.payload
-      }
+        episodes: action.payload,
+      };
 
     case BYCREATED:
-      const createdFilter = action.payload === 'Created' ? state.characters.filter(i => i.created) : state.characters.filter(i => !i.created)
+      const createdFilter =
+        action.payload === "Created"
+          ? state.characters.filter((i) => i.created)
+          : state.characters.filter((i) => !i.created);
       return {
         ...state,
-        characters: action.payload === 'All' ? state.characters : createdFilter
-      }
+        characters: action.payload === "All" ? state.characters : createdFilter,
+      };
 
     case ORDER:
-      const orderName = action.payload === 'A-Z' ?
-        state.characters.sort(function (a, b) {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (b.name > a.name) {
-            return -1;
-          }
-          return 0;
-        }) :
-        state.characters.sort(function (a, b) {
-          if (a.name > b.name) {
-            return -1;
-          }
-          if (b.name > a.name) {
-            return 1;
-          }
-          return 0;
-        });
+      const orderName =
+        action.payload === "A-Z"
+          ? state.characters.sort(function (a, b) {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.characters.sort(function (a, b) {
+              if (a.name > b.name) {
+                return -1;
+              }
+              if (b.name > a.name) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
-        characters: orderName
-      }
-
+        characters: orderName,
+      };
 
     case POST:
       return {
-        ...state
-      }
+        ...state,
+      };
 
     case CLEAR_PAGE:
       return {
@@ -82,7 +96,7 @@ function rootReducer(state = initialState, action) {
       };
 
     default:
-      return state
+      return state;
   }
 }
 

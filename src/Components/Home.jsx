@@ -33,7 +33,8 @@ const Home = () => {
 
   let firsItemPerPage = lastItemPerPage - itemsPerPage; // 20 - 5  --> 15
 
-  let currentPageItems = allCharacters?.slice(firsItemPerPage, lastItemPerPage);
+  let currentPageItems = allCharacters.slice(firsItemPerPage, lastItemPerPage);
+  console.log(currentPageItems)
 
   let pages = [];
   //                                    21       /   5
@@ -53,10 +54,15 @@ const Home = () => {
   //reder to paginations
   const renderPages = pages.map((page) => (
     <li key={page} style={{ display: "flex", margin: "0.2rem" }}>
-      <div >
+      <div>
         <button
           onClick={(e) => pagination(e, page)}
-          style={{width:"1.5rem",padding:"0.2rem", backgroundColor: "#414040",color:'#fff' }}
+          style={{
+            width: "1.5rem",
+            padding: "0.2rem",
+            backgroundColor: "#414040",
+            color: "#fff",
+          }}
         >
           {page}
         </button>
@@ -71,11 +77,6 @@ const Home = () => {
     setOrder(`Ordenado ${e.target.value}`);
   }
 
-  // function handleCreated(e) {
-  //   dispatch(byCreated(e.target.value));
-  //   {console.log(e.target.value)}
-  // }
-
   console.log(allCharacters.length);
   if (!allCharacters) {
     return <div className={style.container}>Error</div>;
@@ -85,23 +86,40 @@ const Home = () => {
       <div>
         <Nav />
         {/* order */}
-        <div className="orders" style={{display:"flex",alignItems:"center", justifyContent:"center",flexWrap:"wrap"}}>
+        <div
+          className="orders"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
           <div className="FILTERS">
             <select onChange={(e) => handleOrder(e)}>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
-            {/* <select onChange={(e) => handleCreated(e)}>
-              <option value="All">All</option>
-              <option value="Created">Created </option>
-              <option value="api">Api</option>
-            </select> */}
-            
           </div>
 
-          <div className="paginations" style={{display:"flex",alignItems:"center", justifyContent:"center",flexWrap:"wrap"}}>
+          <div
+            className="paginations"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             {/* pagination */}
-            <ul style={{ display:"flex",alignItems:"center", justifyContent:"center",flexWrap:"wrap"}}>
+            <ul
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
               {renderPages}
             </ul>
           </div>
