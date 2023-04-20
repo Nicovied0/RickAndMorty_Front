@@ -10,13 +10,15 @@ const Search = () => {
   const handleInput = (e) => {
     e.preventDefault();
     setSearchPj(e.target.value);
+    dispatch(getByName(searchPj));
+    
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(getByName(searchPj));
-  };
-console.log(searchPj)
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(getByName(searchPj));
+  // };
+  console.log(searchPj);
   return (
     <div className={style.searchbar_container}>
       <input
@@ -25,13 +27,14 @@ console.log(searchPj)
         onChange={handleInput}
         placeholder="Search..."
       />
-      <button
+      {/* <button
         className={`${style.searchbar_button}`}
         type="submit"
         onClick={handleSubmit}
       >
         Go
-      </button>
+      </button> */}
+      
     </div>
   );
 };

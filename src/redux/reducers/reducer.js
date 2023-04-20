@@ -1,13 +1,14 @@
 import {
-  GET_CHARACTER,
+  // GET_CHARACTER,
   GET_DETAILS,
   GET_EPISODES,
   GET_BY_NAME,
-  BYCREATED,
   CLEAR_PAGE,
   ORDER,
   POST,
   CLEAR_DETAILS,
+  GET_API_CHARACTER,
+  FILTER_BY_SPECIE,
 } from "../actions/actions";
 
 const initialState = {
@@ -19,12 +20,11 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_CHARACTER:
+    case GET_API_CHARACTER:
       return {
         ...state,
         characters: action.payload,
       };
-
     case GET_DETAILS:
       return {
         ...state,
@@ -46,16 +46,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         episodes: action.payload,
-      };
-
-    case BYCREATED:
-      const createdFilter =
-        action.payload === "Created"
-          ? state.characters.filter((i) => i.created)
-          : state.characters.filter((i) => !i.created);
-      return {
-        ...state,
-        characters: action.payload === "All" ? state.characters : createdFilter,
       };
 
     case ORDER:
@@ -83,7 +73,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         characters: orderName,
       };
-
+    case FILTER_BY_SPECIE:
+      const filtredBySpecies = state.characters;
+      const speciesFilteredBC =
+        action.payload === "All"
+          ? filtredBySpecies
+          : filtredBySpecies.filter((el) => el.species === action.payload);
+      return {
+        ...state,
+        countries: speciesFilteredBC,
+      };
     case POST:
       return {
         ...state,

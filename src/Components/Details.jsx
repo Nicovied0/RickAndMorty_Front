@@ -27,13 +27,32 @@ function Details(props) {
               src={details.image}
               alt={details.name}
             />
-            <h1 className={style.text_details}>{details.name}</h1>
           </div>
           <div className={style.div_div_details}>
-            <h2>Origin: {details.origin?.name}</h2>
-            <h2>Species: {details.species}</h2>
-            <h2>Gender: {details.gender}</h2>
-            <h2>Status: {details.status}</h2>
+            <h1 className={style.text_details}>{details.name}</h1>
+            <div className={style.div_text_details}>
+              <div className={style.div_text}>
+                <h2 className={style.h2Text}>Origin: </h2>
+                <h3>{details.origin?.name}</h3>
+              </div>
+              <div className={style.div_text}>
+                <h2 className={style.h2Text}>Species: </h2>
+                <h3>{details.species}</h3>
+              </div>
+              <div className={style.div_text}>
+                <h2 className={style.h2Text}>Gender: </h2>
+                <h3>{details.gender}</h3>
+              </div>
+              <div className={style.div_text}>
+                <h2 className={style.h2Text}>Status: </h2>
+                {details.status === "Alive" ? (
+                  <span className={style.span} />
+                ) : (
+                  <span className={style.spanDead} />
+                )}
+                <h3> {details.status} </h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>

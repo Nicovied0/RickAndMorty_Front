@@ -1,11 +1,16 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCharacters, byOrder } from "../redux/actions/actions";
+import {
+  byOrder,
+  getApiCharacter,
+  filterBySpecie,
+} from "../redux/actions/actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Nav from "./Nav";
 // import Loader from "../assets/Loading.gif"
 import style from "./Styles/Home.module.css";
+import Filters from "./Filters";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,28 +18,18 @@ const Home = () => {
   const [order, setOrder] = useState("");
 
   useEffect(() => {
-    dispatch(getCharacters());
+    dispatch(getApiCharacter());
   }, [dispatch]);
-
-  // function handleClick(e){
-  //   e.preventDefault();
-  //   dispatch(getCharacters())
-  // }
-
-  //un estado que nos tome la pagina actual
-  //un estado que nos tome la cantidad de cards por pagina
-  //estado con arreglo de paginas
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
 
-  //necesito 3 variables para saber cuantos items tengo y saber cuantas paginas voy a necesitar
   let lastItemPerPage = currentPage * itemsPerPage; // --> 4 * 5 --> 20
 
   let firsItemPerPage = lastItemPerPage - itemsPerPage; // 20 - 5  --> 15
 
   let currentPageItems = allCharacters.slice(firsItemPerPage, lastItemPerPage);
-  console.log(currentPageItems)
+  console.log(currentPageItems);
 
   let pages = [];
   //                                    21       /   5
@@ -44,9 +39,7 @@ const Home = () => {
     pages.push(i);
   }
 
-  //with the button e preventdefault  i go to the page of the pressed button
   function pagination(e, page) {
-    // console.log(page - 1, "soy page ");
     e.preventDefault();
     setCurrentPage(page);
   }
@@ -76,6 +69,9 @@ const Home = () => {
     setCurrentPage(1);
     setOrder(`Ordenado ${e.target.value}`);
   }
+  function handlefilterSpecie(e) {
+    dispatch(filterBySpecie(e.target.value));
+  }
 
   console.log(allCharacters.length);
   if (!allCharacters) {
@@ -85,7 +81,6 @@ const Home = () => {
     return (
       <div>
         <Nav />
-        {/* order */}
         <div
           className="orders"
           style={{
@@ -99,6 +94,19 @@ const Home = () => {
             <select onChange={(e) => handleOrder(e)}>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
+            </select>
+          </div>
+          <div>
+            <select
+              onChange={(e) => {
+                handlefilterSpecie(e);
+              }}
+            >
+              <option disabled selected defaultValue={"All"}>
+                All
+              </option>
+              <option value={"Human"}> Human </option>
+              <option value={"NoHuman"}> No Human </option>
             </select>
           </div>
 
