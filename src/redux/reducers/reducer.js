@@ -14,7 +14,7 @@ import {
 const initialState = {
   characters: [],
   details: [],
-  filteredCharacters: [],
+  allCharacters: [],
   episodes: [],
 };
 
@@ -24,6 +24,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         characters: action.payload,
+        allCharacters: action.payload,
       };
     case GET_DETAILS:
       return {
@@ -37,16 +38,19 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_BY_NAME:
-      return {
-        ...state,
-        characters: action.payload,
-      };
-
-    case GET_EPISODES:
-      return {
-        ...state,
-        episodes: action.payload,
-      };
+      let characters = state.characters;
+      let allCharacters = state.allCharacters;
+      if (characters.length !== []) {
+        return {
+          ...state,
+          characters: action.payload,
+        };
+      } else {
+        return {
+          ...state,
+          characters: allCharacters,
+        };
+      }
 
     case ORDER:
       const orderName =
@@ -73,19 +77,18 @@ function rootReducer(state = initialState, action) {
         ...state,
         characters: orderName,
       };
+
     case FILTER_BY_SPECIE:
-      const filtredBySpecies = state.characters;
-      const speciesFilteredBC =
+      const filtredBySpecies = state.allCharacters;
+      let speciesFilteredBC =
         action.payload === "All"
           ? filtredBySpecies
           : filtredBySpecies.filter((el) => el.species === action.payload);
+
+      console.log(action.payload);
       return {
         ...state,
-        countries: speciesFilteredBC,
-      };
-    case POST:
-      return {
-        ...state,
+        characters: speciesFilteredBC,
       };
 
     case CLEAR_PAGE:

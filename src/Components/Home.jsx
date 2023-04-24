@@ -8,9 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Nav from "./Nav";
-// import Loader from "../assets/Loading.gif"
 import style from "./Styles/Home.module.css";
-import Filters from "./Filters";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -102,11 +100,9 @@ const Home = () => {
                 handlefilterSpecie(e);
               }}
             >
-              <option disabled selected defaultValue={"All"}>
-                All
-              </option>
+              <option value={"All"}>All</option>
               <option value={"Human"}> Human </option>
-              <option value={"NoHuman"}> No Human </option>
+              <option value={"Alien"}> No Human </option>
             </select>
           </div>
 
