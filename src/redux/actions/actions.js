@@ -11,6 +11,7 @@ export const CLEAR_DETAILS = "CLEAR_DETAILS";
 export const GET_API_CHARACTER = "GET_API_CHARACTER";
 export const FILTER_BY_SPECIE = "FILTER_BY_SPECIE";
 export const FILTER_BY_GERDEN = "FILTER_BY_GERDEN";
+export const FILTER_BY_STATUS = "FILTER_BY_STATUS";
 
 export function getDetails(id) {
   return async function (dispatch) {
@@ -69,6 +70,7 @@ export function getApiCharacter() {
             episode: el.episode.map((i) => i),
             characterApi: true,
             gender: el.gender,
+            status: el.status,
           });
         });
 
@@ -126,6 +128,12 @@ export function filterBySpecie(payload) {
 export function filterByGerden(payload) {
   return {
     type: FILTER_BY_GERDEN,
+    payload,
+  };
+}
+export function filterByStatus(payload) {
+  return {
+    type: FILTER_BY_STATUS,
     payload,
   };
 }

@@ -5,6 +5,7 @@ import {
   getApiCharacter,
   filterBySpecie,
   filterByGerden,
+  filterByStatus,
 } from "../redux/actions/actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -77,6 +78,10 @@ const Home = () => {
     dispatch(filterByGerden(e.target.value));
     setCurrentPage(1);
   }
+  function handlefilterStatus(e) {
+    dispatch(filterByStatus(e.target.value));
+    setCurrentPage(1);
+  }
   console.log(allCharacters.length);
   if (!allCharacters) {
     return <div className={style.container}>Error</div>;
@@ -122,7 +127,18 @@ const Home = () => {
               <option value={"Female"}> Female </option>
             </select>
           </div>
-
+          <div>
+            <select
+              onChange={(e) => {
+                handlefilterStatus(e);
+              }}
+            >
+              <option value={"All"}>All</option>
+              <option value={"Alive"}> Alive </option>
+              <option value={"Dead"}> Dead </option>
+              <option value={"unknown"}> Unknown </option>
+            </select>
+          </div>
           <div
             className="paginations"
             style={{
@@ -158,6 +174,7 @@ const Home = () => {
                     image={e.image}
                     key={e.id}
                     gender={e.gender}
+                    status={e.status}
                   />
                 </Link>
               </div>

@@ -8,6 +8,7 @@ import {
   CLEAR_DETAILS,
   GET_API_CHARACTER,
   FILTER_BY_SPECIE,
+  FILTER_BY_STATUS,
 } from "../actions/actions";
 
 const initialState = {
@@ -100,6 +101,18 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         characters: genderFiltered,
+      };
+    case FILTER_BY_STATUS:
+      const filtredByStatus = state.allCharacters;
+      let statusFiltered =
+        action.payload === "All"
+          ? filtredByStatus
+          : filtredByStatus.filter((el) => el.status === action.payload);
+
+      console.log(action.payload);
+      return {
+        ...state,
+        characters: statusFiltered,
       };
 
     case CLEAR_PAGE:
