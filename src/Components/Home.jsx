@@ -111,9 +111,9 @@ const Home = () => {
                 handlefilterSpecie(e);
               }}
             >
-              <option value={"All"}>All</option>
+              <option value={"All"}>Origin</option>
               <option value={"Human"}> Human </option>
-              <option value={"Alien"}> No Human </option>
+              <option value={"Alien"}> Alien </option>
             </select>
           </div>
           <div>
@@ -133,7 +133,7 @@ const Home = () => {
                 handlefilterStatus(e);
               }}
             >
-              <option value={"All"}>All</option>
+              <option value={"All"}>Status</option>
               <option value={"Alive"}> Alive </option>
               <option value={"Dead"}> Dead </option>
               <option value={"unknown"}> Unknown </option>
