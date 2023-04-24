@@ -1,11 +1,10 @@
 import {
   // GET_CHARACTER,
   GET_DETAILS,
-  GET_EPISODES,
   GET_BY_NAME,
   CLEAR_PAGE,
   ORDER,
-  POST,
+  FILTER_BY_GERDEN,
   CLEAR_DETAILS,
   GET_API_CHARACTER,
   FILTER_BY_SPECIE,
@@ -89,6 +88,18 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         characters: speciesFilteredBC,
+      };
+    case FILTER_BY_GERDEN:
+      const filtredByGerden = state.allCharacters;
+      let genderFiltered =
+        action.payload === "All"
+          ? filtredByGerden
+          : filtredByGerden.filter((el) => el.gender === action.payload);
+
+      console.log(action.payload);
+      return {
+        ...state,
+        characters: genderFiltered,
       };
 
     case CLEAR_PAGE:

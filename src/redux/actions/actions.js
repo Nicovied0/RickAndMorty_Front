@@ -10,17 +10,7 @@ export const POST = "POST";
 export const CLEAR_DETAILS = "CLEAR_DETAILS";
 export const GET_API_CHARACTER = "GET_API_CHARACTER";
 export const FILTER_BY_SPECIE = "FILTER_BY_SPECIE";
-// export const GET_CHARACTER_DETAIL = "GET_CHARACTER_DETAIL";
-
-// export const getCharacters = () => {
-//   return async (dispatch) => {
-//     const res = await axios.get("https://rickandmortyapi.com/api/character");
-//     return dispatch({
-//       type: GET_CHARACTER,
-//       payload: res.data.results,
-//     });
-//   };
-// };
+export const FILTER_BY_GERDEN = "FILTER_BY_GERDEN";
 
 export function getDetails(id) {
   return async function (dispatch) {
@@ -71,12 +61,14 @@ export function getApiCharacter() {
         apiData.data.results?.forEach((el) => {
           return allCharacters.push({
             id: el.id,
+
             name: el.name,
             species: el.species,
             origin: el.origin.name,
             image: el.image,
             episode: el.episode.map((i) => i),
             characterApi: true,
+            gender: el.gender,
           });
         });
 
@@ -127,6 +119,13 @@ export const clearPage = () => {
 export function filterBySpecie(payload) {
   return {
     type: FILTER_BY_SPECIE,
+    payload,
+  };
+}
+
+export function filterByGerden(payload) {
+  return {
+    type: FILTER_BY_GERDEN,
     payload,
   };
 }
