@@ -99,57 +99,57 @@ const Home = () => {
             flexWrap: "wrap",
           }}
         >
-          <div className="FILTERS">
-            <select onChange={(e) => handleOrder(e)}>
-              <option value="A-Z">A-Z</option>
-              <option value="Z-A">Z-A</option>
-            </select>
-          </div>
           <div>
-            <select
-              onChange={(e) => {
-                handlefilterSpecie(e);
-              }}
-            >
-              <option value={"All"}>Origin</option>
-              <option value={"Human"}> Human </option>
-              <option value={"Alien"}> Alien </option>
-            </select>
-          </div>
-          <div>
-            <select
-              onChange={(e) => {
-                handlefilterGender(e);
-              }}
-            >
-              <option value={"All"}>Gerden</option>
-              <option value={"Male"}> Male </option>
-              <option value={"Female"}> Female </option>
-            </select>
-          </div>
-          <div>
-            <select
-              onChange={(e) => {
-                handlefilterStatus(e);
-              }}
-            >
-              <option value={"All"}>Status</option>
-              <option value={"Alive"}> Alive </option>
-              <option value={"Dead"}> Dead </option>
-              <option value={"unknown"}> Unknown </option>
-            </select>
-          </div>
-          <div
-            className="paginations"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            {/* pagination */}
-            <ul
+            <div className={style.filters}>
+              <div >
+                <select
+                  onChange={(e) => handleOrder(e)}
+                  className={style.select}
+                >
+                  <option value="A-Z">A-Z</option>
+                  <option value="Z-A">Z-A</option>
+                </select>
+              </div>
+              <div>
+                <select
+                  onChange={(e) => {
+                    handlefilterSpecie(e);
+                  }}
+                  className={style.select}
+                >
+                  <option value={"All"}>Origin</option>
+                  <option value={"Human"}> Human </option>
+                  <option value={"Alien"}> Alien </option>
+                </select>
+              </div>
+              <div>
+                <select
+                  onChange={(e) => {
+                    handlefilterGender(e);
+                  }}
+                  className={style.select}
+                >
+                  <option value={"All"}>Gerden</option>
+                  <option value={"Male"}> Male </option>
+                  <option value={"Female"}> Female </option>
+                </select>
+              </div>
+              <div>
+                <select
+                  onChange={(e) => {
+                    handlefilterStatus(e);
+                  }}
+                  className={style.select}
+                >
+                  <option value={"All"}>Status</option>
+                  <option value={"Alive"}> Alive </option>
+                  <option value={"Dead"}> Dead </option>
+                  <option value={"unknown"}> Unknown </option>
+                </select>
+              </div>
+            </div>
+            <div
+              className="paginations"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -157,8 +157,18 @@ const Home = () => {
                 flexWrap: "wrap",
               }}
             >
-              {renderPages}
-            </ul>
+              {/* pagination */}
+              <ul
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                {renderPages}
+              </ul>
+            </div>
           </div>
         </div>
         <div className={style.container}>
