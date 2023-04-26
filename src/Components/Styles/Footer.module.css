@@ -1,0 +1,32 @@
+.div {
+  display: flex;
+  flex-direction: row;
+}
+
+.img {
+  border-radius: 100%;
+}
+
+.divGeneral {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ul {
+  display: flex;
+  align-items: center;
+}
+
+.li {
+  margin: 1rem;
+  list-style: none;
+}
+.atext{
+  text-decoration: none;
+  color: #fff;
+}
+.plink:hover{
+  background-color: #c70f65;
+}

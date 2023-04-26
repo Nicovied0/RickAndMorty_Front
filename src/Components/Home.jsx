@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import Nav from "./Nav";
 import style from "./Styles/Home.module.css";
+import Footer from "./Footer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const Home = () => {
   } else if (allCharacters.length) {
     // console.log(currentPageItems);
     return (
-      <div>
+      <div className={style.divGeneral}>
         <Nav />
         <div
           className="orders"
@@ -101,7 +102,7 @@ const Home = () => {
         >
           <div>
             <div className={style.filters}>
-              <div >
+              <div>
                 <select
                   onChange={(e) => handleOrder(e)}
                   className={style.select}
@@ -171,26 +172,29 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className={style.container}>
-          {currentPageItems?.map((e) => {
-            return (
-              <div key={e.id}>
-                <Link
-                  to={"/character/" + e.id}
-                  className={style.text_container}
-                >
-                  <Card
-                    name={e.name}
-                    image={e.image}
-                    key={e.id}
-                    gender={e.gender}
-                    status={e.status}
-                  />
-                </Link>
-              </div>
-            );
-          })}
+        <div>
+          <div className={style.container}>
+            {currentPageItems?.map((e) => {
+              return (
+                <div key={e.id}>
+                  <Link
+                    to={"/character/" + e.id}
+                    className={style.text_container}
+                  >
+                    <Card
+                      name={e.name}
+                      image={e.image}
+                      key={e.id}
+                      gender={e.gender}
+                      status={e.status}
+                    />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
+        <Footer />
       </div>
     );
   } else {
